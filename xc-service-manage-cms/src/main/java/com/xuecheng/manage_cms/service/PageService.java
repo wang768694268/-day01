@@ -35,10 +35,10 @@ public class PageService {
             size = 20;
         }
         //分页对象
-        PageRequest pageable = new PageRequest(page, size);
+        PageRequest pageable = PageRequest.of(page, size);
         //分页对象
         Page<CmsPage> all = cmsPageRepository.findAll(pageable);
-        QueryResult<CmsPage> cmsPageQueryResult = new QueryResult<>();
+        QueryResult<CmsPage> cmsPageQueryResult = new QueryResult();
         cmsPageQueryResult.setList(all.getContent());
         cmsPageQueryResult.setTotal(all.getTotalElements());
         return new QueryResponseResult(CommonCode.SUCCESS, cmsPageQueryResult);
